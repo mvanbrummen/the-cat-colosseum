@@ -1,0 +1,31 @@
+body {
+    font-family: 'Crushed', cursive;
+
+    background: #f1f1f1;
+}
+
+.thumb {
+    margin-top: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.video-gallery {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #FFF !important;
+    padding: 30px;
+}
+
+@media screen and (min-width: 600px) {
+    #navSearchForm input[type=text] {
+        width: 500px !important;
+    }
+}
+
+::-webkit-input-placeholder { font-family: 'Crushed', cursive; }
+::-moz-placeholder { font-family: 'Crushed', cursive; } /* firefox 19+ */
+:-ms-input-placeholder { font-family: 'Crushed', cursive; } /* ie */
+input:-moz-placeholder { font-family: 'Crushed', cursive; }
