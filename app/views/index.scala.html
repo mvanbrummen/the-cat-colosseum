@@ -1,3 +1,5 @@
+@(videos: Seq[Video])
+
 @main("Cat Colosseum") {
 
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
@@ -26,70 +28,14 @@
 <div class="container video-gallery">
 
     <div class="row">
-
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-                <!--<video class="img-fluid img-thumbnail" controls>-->
-                <!--<source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>-->
-                <!--</video>-->
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
+        @videos.map { video =>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#">
+                    <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+                    <label>@video.description</label>
+                </a>
+            </div>
+        }
     </div>
 </div>
 
