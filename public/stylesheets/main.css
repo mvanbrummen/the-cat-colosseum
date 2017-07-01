@@ -4,12 +4,32 @@ body {
     background: #f1f1f1;
 }
 
+.navbar-brand {
+    color: #ff7041 !important;
+}
+
 .thumb {
     margin-top: 30px;
 }
 
+.thumb a label {
+    color: #ff7041;
+}
+
+.thumb a label:hover {
+    cursor: pointer;
+}
+
+.thumb a:hover {
+    text-decoration: none;
+}
+
 footer {
     margin: 50px 0;
+}
+
+.page-item .page-link {
+    color: #ff7041;
 }
 
 .video-gallery {

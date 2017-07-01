@@ -1,42 +1,58 @@
-@(videos: Seq[Video])
+@(videos: Seq[VideoGallery])
 
 @main("Cat Colosseum") {
 
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">The Cat Colosseum</a>
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><i class="fa fa-paw" aria-hidden="true"></i> The Cat Colosseum</a>
 
-    <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fa fa-upload" aria-hidden="true"></i> Upload <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <form id="navSearchForm" class="form-inline">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span>
-            </div>
-        </form>
-    </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fa fa-upload" aria-hidden="true"></i> Upload <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form id="navSearchForm" class="form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>
 <!-- Page Content -->
 <div class="container video-gallery">
 
     <div class="row">
         @videos.map { video =>
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-                    <label>@video.description</label>
+                <a class="thumbnail img-hover" href="#">
+                    <img class="img-fluid img-thumbnail" src=@{routes.HomeController.getThumbnail(video.id)} alt="">
                 </a>
+                <div>
+                    <a>
+                        <label>@video.title</label>
+                    </a>
+                </div>
+                <div>
+                    <small class="text-muted">Uploaded @video.uploadedAgo</small>
+                </div>
+                <div>
+                    <span class="badge badge-pill badge-default"><i class="fa fa-thumbs-up" aria-hidden="true"></i> @video.likes</span>
+                    <span class="badge badge-pill badge-default"><i class="fa fa-thumbs-down" aria-hidden="true"></i> @video.dislikes</span>
+                    <span class="badge badge-pill badge-default"><i class="fa fa-eye" aria-hidden="true"></i> @video.views</span>
+                </div>
+
             </div>
         }
     </div>
+
 </div>
 
 <div class="container">

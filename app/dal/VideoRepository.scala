@@ -34,11 +34,13 @@ class VideoRepository @Inject()(
 
   }
 
-  private val videos = TableQuery[VideoTable]
+  private lazy val videos = TableQuery[VideoTable]
 
   def list(): Future[Seq[Video]] = db.run {
     videos.result
   }
+
+  def find(id: Long): Future[Option[Video]] = db.run(videos.filter(_.id === id).result.headOption)
 
 }
 
