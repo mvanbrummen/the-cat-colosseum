@@ -1,6 +1,7 @@
 package dal
 
 import java.sql.{Blob, Date}
+import java.util.Calendar
 import javax.inject._
 
 import models.Video
@@ -10,9 +11,8 @@ import slick.jdbc.JdbcProfile
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class VideoRepository @Inject()(
-                                 protected val dbConfigProvider: DatabaseConfigProvider
-                               )(implicit ec: ExecutionContext) extends HasDatabaseConfigProvider[JdbcProfile] {
+class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext)
+  extends HasDatabaseConfigProvider[JdbcProfile] {
 
   import profile.api._
 
@@ -26,11 +26,19 @@ class VideoRepository @Inject()(
 
     def thumbnail = column[Option[Blob]]("thumbnail")
 
+    def video = column[Option[Blob]]("video")
+
+    def likes = column[Long]("likes")
+
+    def dislikes = column[Long]("dislikes")
+
+    def views = column[Long]("views")
+
     def createdDate = column[Date]("created_date")
 
     def modifiedDate = column[Date]("modified_date")
 
-    def * = (id, title, description, thumbnail, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
+    def * = (id, title, description, thumbnail, video, likes, dislikes, views, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
 
   }
 
@@ -41,6 +49,15 @@ class VideoRepository @Inject()(
   }
 
   def find(id: Long): Future[Option[Video]] = db.run(videos.filter(_.id === id).result.headOption)
+
+  def insert(title: String,
+             description: String,
+             thumbnail: Blob,
+             video: Blob) = {
+    val now = new Date(Calendar.getInstance().getTimeInMillis)
+    val action = (videos returning videos.map(_.id)) += Video(1L, title, description, Some(thumbnail), Some(video), 0, 0, 0, now, now)
+    db.run(action)
+  }
 
 }
 

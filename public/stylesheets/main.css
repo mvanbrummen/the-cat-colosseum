@@ -20,6 +20,21 @@ body {
     margin-top: 30px;
 }
 
+.btn-primary {
+    background-color: #ff7041 !important;
+    border-color: #ff7041 !important;
+}
+
+.btn-primary:hover {
+    background-color: #ff561f !important;
+    border-color: #ff561f !important;
+    cursor: pointer;
+}
+
+.upload-section {
+    padding: 0 50px 0 50px;
+}
+
 .thumb a {
     color: #ff7041 !important;
 }

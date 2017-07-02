@@ -1,7 +1,7 @@
 # --- !Ups
 
-INSERT INTO video (title, description, thumbnail, created_date, modified_date)
-VALUES ('Tabby vs Black Cat', 'Cats fight each other', FILE_READ('/Users/mvanbrummen/dev/scala/catThumbnails/cats1.jpg'), CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+INSERT INTO video (title, description, thumbnail, likes, dislikes, views, created_date, modified_date)
+VALUES ('Tabby vs Black Cat', 'Cats fight each other', FILE_READ('/Users/mvanbrummen/dev/scala/catThumbnails/cats1.jpg'), 109, 2, 10990, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 INSERT INTO video (title, description, thumbnail, created_date, modified_date)
 VALUES ('Aggressive Ginger vs White Cat', 'Cats fight each other', FILE_READ('/Users/mvanbrummen/dev/scala/catThumbnails/cats2.jpeg'), CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());

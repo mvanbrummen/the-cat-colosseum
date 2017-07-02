@@ -5,24 +5,25 @@ import javax.inject._
 import dal.VideoRepository
 import models.Video
 import play.api.mvc._
+import service.{IVideoService, VideoService}
 
 import scala.concurrent.ExecutionContext
 
 
 case class VideoGallery(id: Long,
                         title: String,
-                        views: Long,
                         likes: Long,
                         dislikes: Long,
+                        views: Long,
                         uploadedAgo: String)
 
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents, repo: VideoRepository)(implicit ec: ExecutionContext)
+class HomeController @Inject()(cc: ControllerComponents, repo: VideoRepository, service: IVideoService)(implicit ec: ExecutionContext)
   extends AbstractController(cc) {
 
   def index() = Action.async { implicit request: Request[AnyContent] =>
-    repo.list().map { videos =>
-      Ok(views.html.index(videos.map(Video.toVideoGallery)))
+    service.findAllVideos().map { video =>
+      Ok(views.html.index(video))
     }
   }
 
