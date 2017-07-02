@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-upload" aria-hidden="true"></i> Upload <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#"><i class="fa fa-upload" aria-hidden="true"></i> <span>Upload</span> <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form id="navSearchForm" class="form-inline">
@@ -36,9 +36,9 @@
                     <img class="img-fluid img-thumbnail" src=@{routes.HomeController.getThumbnail(video.id)} alt="">
                 </a>
                 <div>
-                    <a>
-                        <label>@video.title</label>
-                    </a>
+                    <h5>
+                        <a>@video.title</a>
+                    </h5>
                 </div>
                 <div>
                     <small class="text-muted">Uploaded @video.uploadedAgo</small>
@@ -71,3 +71,5 @@
     </nav>
 </div>
 }
+
+

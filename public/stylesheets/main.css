@@ -8,20 +8,25 @@ body {
     color: #ff7041 !important;
 }
 
+.navbar-brand:hover {
+    color: #FFF !important;
+}
+
+.nav-link span:hover {
+   color: #ff7041 !important;
+}
+
 .thumb {
     margin-top: 30px;
 }
 
-.thumb a label {
-    color: #ff7041;
-}
-
-.thumb a label:hover {
-    cursor: pointer;
+.thumb a {
+    color: #ff7041 !important;
 }
 
 .thumb a:hover {
-    text-decoration: none;
+    cursor: pointer;
+    text-decoration: underline !important;
 }
 
 footer {
