@@ -13,6 +13,8 @@ trait IVideoService {
 
   def findAllVideos(): Future[Seq[VideoGallery]]
 
+  def findOne(id: Long): Future[Option[Video]]
+
 }
 
 @Singleton
@@ -24,4 +26,7 @@ class VideoService @Inject()(repo: VideoRepository)(implicit ec: ExecutionContex
     }
   }
 
+  override def findOne(id: Long): Future[Option[Video]] = {
+    repo.find(id)
+  }
 }

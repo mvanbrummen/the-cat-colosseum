@@ -1,3 +1,5 @@
+@(video: Video)
+
 @main("Cat Colosseum") {
 
     @header()
@@ -6,9 +8,37 @@
     <div class="container video-gallery">
 
         <div class="row">
+            <h1>@video.title</h1>
 
+            <div style="background-color: black;" class="col-md-12">
+                <video width="600" height="200" controls>
+
+                </video>
+            </div>
+            <div class="video-btn-group">
+                <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</button>
+                <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Dislike</button>
+            </div>
 
         </div>
+
+    </div>
+
+    <div class="container video-gallery">
+
+        <div class="row">
+            <h3>Comments • </h3>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col-md-12 video-comment">
+                    <textarea id="videoCommentTextArea" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary pull-right">Comment</button>
+                </div>
+            </div>
+        </form>
 
     </div>
 }

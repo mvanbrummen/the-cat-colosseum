@@ -59,6 +59,14 @@ footer {
     padding: 30px;
 }
 
+.video-btn-group {
+    margin-top: 10px;
+}
+
+.video-comment {
+    margin-bottom: 10px;
+}
+
 @media screen and (min-width: 600px) {
     #navSearchForm input[type=text] {
         width: 500px !important;
@@ -69,3 +77,8 @@ footer {
 ::-moz-placeholder { font-family: 'Crushed', cursive; } /* firefox 19+ */
 :-ms-input-placeholder { font-family: 'Crushed', cursive; } /* ie */
 input:-moz-placeholder { font-family: 'Crushed', cursive; }
+
+video {
+    width: 100%;
+    height: auto;
+}
