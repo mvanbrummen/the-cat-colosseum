@@ -26,8 +26,6 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
     def thumbnail = column[Option[Blob]]("thumbnail")
 
-    def video = column[Option[Blob]]("video")
-
     def likes = column[Long]("likes")
 
     def dislikes = column[Long]("dislikes")
@@ -38,7 +36,7 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
     def modifiedDate = column[Date]("modified_date")
 
-    def * = (id, title, description, thumbnail, video, likes, dislikes, views, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
+    def * = (id, title, description, thumbnail, likes, dislikes, views, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
 
   }
 
@@ -52,10 +50,9 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
   def insert(title: String,
              description: String,
-             thumbnail: Blob,
-             video: Blob) = {
+             thumbnail: Blob) = {
     val now = new Date(Calendar.getInstance().getTimeInMillis)
-    val action = (videos returning videos.map(_.id)) += Video(1L, title, description, Some(thumbnail), Some(video), 0, 0, 0, now, now)
+    val action = (videos returning videos.map(_.id)) += Video(1L, title, description, Some(thumbnail), 0, 0, 0, now, now)
     db.run(action)
   }
 

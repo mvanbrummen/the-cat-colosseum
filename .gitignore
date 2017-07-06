@@ -8,3 +8,6 @@ target
 /RUNNING_PID
 *.jpeg
 tmp
+*.mp4
+.DS_store
+

@@ -49,7 +49,7 @@ class UploadController @Inject()(cc: ControllerComponents, repo: VideoRepository
           val thumbnail = new File(tempFilePath)
           val fileInput = new FileInputStream(thumbnail)
 
-          val videoId = repo.insert(uploadData.title, uploadData.description, new SerialBlob(IOUtils.toByteArray(fileInput)), new SerialBlob(IOUtils.toByteArray(fileInput)))
+          val videoId = repo.insert(uploadData.title, uploadData.description, new SerialBlob(IOUtils.toByteArray(fileInput)))
         }
         Ok(uploadData.title)
       }

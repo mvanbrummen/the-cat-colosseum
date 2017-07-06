@@ -16,6 +16,8 @@ POST    /upload.html                controllers.UploadController.uploadPost
 
 GET     /watch/:id                  controllers.VideoController.watch(id: Long)
 
+GET     /video/:id                  controllers.VideoController.video(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
