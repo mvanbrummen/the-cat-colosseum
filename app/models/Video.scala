@@ -7,7 +7,8 @@ import controllers.VideoGallery
 case class Video(id: Long,
                  title: String,
                  description: String,
-                 image: Option[Blob],
+                 thumbnailLocation: String,
+                 videoLocation: String,
                  likes: Long,
                  dislikes: Long,
                  views: Long,
@@ -16,7 +17,7 @@ case class Video(id: Long,
 
 object Video {
 
-  def toVideoGallery(video: Video) = VideoGallery(video.id, video.title, video.likes, video.dislikes, video.views, video.createdDate.toString)
+  def toVideoGallery(video: Video) = VideoGallery(video.id, video.title, video.likes, video.dislikes, video.views, video.thumbnailLocation, video.createdDate.toString)
 
   //  implicit val videoFormat = Json.format[Video]
 }

@@ -1,6 +1,6 @@
 package dal
 
-import java.sql.{Blob, Date}
+import java.sql.Date
 import java.util.Calendar
 import javax.inject._
 
@@ -24,7 +24,9 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
     def description = column[String]("description")
 
-    def thumbnail = column[Option[Blob]]("thumbnail")
+    def thumbnailLocation = column[String]("thumbnail_location")
+
+    def videoLocation = column[String]("video_location")
 
     def likes = column[Long]("likes")
 
@@ -36,7 +38,7 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
     def modifiedDate = column[Date]("modified_date")
 
-    def * = (id, title, description, thumbnail, likes, dislikes, views, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
+    def * = (id, title, description, thumbnailLocation, videoLocation, likes, dislikes, views, createdDate, modifiedDate) <> ((Video.apply _).tupled, Video.unapply)
 
   }
 
@@ -48,11 +50,10 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
   def find(id: Long): Future[Option[Video]] = db.run(videos.filter(_.id === id).result.headOption)
 
-  def insert(title: String,
-             description: String,
-             thumbnail: Blob) = {
+  def insert(title: String, description: String, thumbnailLocation: String,
+             videoLocation: String): Future[Long] = {
     val now = new Date(Calendar.getInstance().getTimeInMillis)
-    val action = (videos returning videos.map(_.id)) += Video(1L, title, description, Some(thumbnail), 0, 0, 0, now, now)
+    val action = (videos returning videos.map(_.id)) += Video(1L, title, description, thumbnailLocation, videoLocation, 0, 0, 0, now, now)
     db.run(action)
   }
 
