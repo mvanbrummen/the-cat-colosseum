@@ -6,7 +6,7 @@ import javax.inject._
 import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
 import service.IVideoService
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class VideoController @Inject()(service: IVideoService, cc: ControllerComponents)(implicit ec: ExecutionContext)
@@ -29,6 +29,11 @@ class VideoController @Inject()(service: IVideoService, cc: ControllerComponents
 
       } getOrElse NotFound("No video!")
     }
+  }
+
+  def likeVideo(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+    service.incrementLike(id)
+    Future.successful(Ok("Done"))
   }
 
 }

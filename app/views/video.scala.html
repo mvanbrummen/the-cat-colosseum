@@ -17,8 +17,8 @@
                 </video>
             </div>
             <div class="video-btn-group">
-                <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</button>
-                <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Dislike</button>
+                <button id="likeButton" type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</button>
+                <button id="dislikeButton" type="button" class="btn btn-primary btn-lg"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Dislike</button>
             </div>
 
         </div>
@@ -42,4 +42,15 @@
         </form>
 
     </div>
+
+<script>
+    $(function() {
+        $("#likeButton").click(function() {
+            $.post("/video/" + @video.id + "/like", {}, function(data, status) {
+                alert("Liked! " + status);
+            });
+        });
+    });
+
+</script>
 }

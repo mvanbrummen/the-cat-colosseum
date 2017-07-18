@@ -50,6 +50,14 @@ class VideoRepository @Inject()(protected val dbConfigProvider: DatabaseConfigPr
 
   def find(id: Long): Future[Option[Video]] = db.run(videos.filter(_.id === id).result.headOption)
 
+  def incrementLike(id: Long) = {
+    db.run(videos
+      .filter(_.id === id)
+      .map(v => v.likes)
+      .update(69)
+    )
+  }
+
   def insert(title: String, description: String, thumbnailLocation: String,
              videoLocation: String): Future[Long] = {
     val now = new Date(Calendar.getInstance().getTimeInMillis)

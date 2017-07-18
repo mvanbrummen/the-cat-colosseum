@@ -1,6 +1,5 @@
 package service
 
-import java.sql.Blob
 import javax.inject._
 
 import controllers.VideoGallery
@@ -15,6 +14,8 @@ trait IVideoService {
 
   def findOne(id: Long): Future[Option[Video]]
 
+  def incrementLike(id: Long)
+
 }
 
 @Singleton
@@ -28,5 +29,9 @@ class VideoService @Inject()(repo: VideoRepository)(implicit ec: ExecutionContex
 
   override def findOne(id: Long): Future[Option[Video]] = {
     repo.find(id)
+  }
+
+  override def incrementLike(id: Long) = {
+    repo.incrementLike(id)
   }
 }
