@@ -35,6 +35,10 @@ body {
     padding: 0 50px 0 50px;
 }
 
+.img-thumbnail {
+  margin-bottom: 10px !important;
+}
+
 .thumb a {
     color: #ff7041 !important;
 }
@@ -53,6 +57,13 @@ footer {
 }
 
 .video-gallery {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #FFF !important;
+    padding: 30px;
+}
+
+.video-gutter {
     margin-top: 20px;
     margin-bottom: 20px;
     background: #FFF !important;
