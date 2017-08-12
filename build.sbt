@@ -19,6 +19,7 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test,
   "com.typesafe.play" %% "play-slick" % "3.0.0",
   "com.h2database" % "h2" % "1.4.194",
+  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41",
   "com.typesafe.play" %% "play-slick-evolutions" % "3.0.0",
   "commons-io" % "commons-io" % "2.4"
 )
